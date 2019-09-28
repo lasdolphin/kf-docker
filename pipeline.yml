@@ -38,7 +38,7 @@ resources:
   type: docker-image
   source:
     username:   saedalav
-    password:   ((dockerhub_password))
+    password:   ((image_repo_secret))
     repository: saedalav/kf
 
 
