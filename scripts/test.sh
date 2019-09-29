@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 set -eu pipefile
 
-curl --version
-jq --version
+log () {
+  echo "--------------- $1 ---------------"
+  $1 --version
+  echo "----------------------------------"
+  echo ""
+}
+
+log bash
+log curl
+log jq
