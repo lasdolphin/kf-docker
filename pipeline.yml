@@ -41,7 +41,7 @@ resources:
     password:   ((image_repo_secret))
     repository: saedalav/kf
 
-- name: jq
+- name: jq-github-release
   type: github-release
   source:
     owner: stedolan
