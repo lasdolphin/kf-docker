@@ -54,7 +54,7 @@ jobs:
     - get: repository
       trigger: true
   - task: copy-artifacts
-    file: repoitory/tasks/copy.yml
+    file: repository/tasks/copy.yml
   - put: kf-docker
     params:
       build: builddir
