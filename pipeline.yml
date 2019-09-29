@@ -35,7 +35,7 @@ resources:
     private_key: |
      ((git_private_key))
 
-- name: kf-docker
+- name: kf
   type: docker-image
   source:
     username:   saedalav
@@ -56,13 +56,22 @@ jobs:
         bump: patch
     - get: alpine
       trigger: true
+      params: {save: true}
   - task: copy-artifacts
     file: repository/tasks/copy.yml
     image: alpine
-  - put: kf-docker
+  - put: kf
     params:
+      load_base: alpine
       build: builddir
       tag_file: tag/version
+  - task: sanity-test
+    file: repository/tasks/test.yml
+    image: kf
+  - put: kf
+    params:
+      load: kf
+      build: builddir
       tag_as_latest: true
   - put: tag
     inputs: [tag]
