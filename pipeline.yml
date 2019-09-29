@@ -53,10 +53,13 @@ jobs:
         bump: patch
     - get: repository
       trigger: true
+  - task: copy-artifacts
+    file: repoitory/tasks/copy.yml
   - put: kf-docker
     params:
       build: builddir
       tag_file: tag/version
+      tag_as_latest: true
   - put: tag
     inputs: [tag]
     params:
