@@ -6,6 +6,8 @@ log () {
   $1 $2
   echo "----------------------------------"
   echo ""
+  echo ""
+  echo ""
 }
 
 log bash --version
