@@ -5,6 +5,7 @@ inputs:
 - name: repository
 - name: jq-github-release
 - name: kubectl-release
+- name: kf-cli-release
 
 outputs:
 - name: builddir

@@ -53,7 +53,11 @@ resources:
     url: https://storage.googleapis.com/kubernetes-release/release/stable.txt 
     filename: kubectl-version
 
-
+- name: kf-cli-release
+  type: file-url
+  source:
+    url: https://storage.googleapis.com/artifacts.kf-releases.appspot.com/nightly-builds/cli/kf-linux-latest
+    filename: kf
 
 jobs:
 - name: docker-build
@@ -74,6 +78,8 @@ jobs:
     - get: jq-github-release
       trigger: true
     - get: kubectl-release
+      trigger: true
+    - get: kf-cli-release
       trigger: true
   - task: copy-artifacts
     file: repository/tasks/copy.yml

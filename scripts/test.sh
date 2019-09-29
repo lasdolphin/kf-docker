@@ -12,3 +12,4 @@ log bash --version
 log curl --version
 log jq --version
 log kubectl "version --client"
+log kf version
