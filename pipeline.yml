@@ -1,10 +1,4 @@
 ---
-anchors:
-  busybox_image_resource: &busybox_image_resource
-    type: docker-image
-    source:
-      repository: busybox
-      tag: 1.31.0
 
 
 resource_types:
@@ -22,6 +16,12 @@ resources:
     private_key: |
      ((git_private_key))
 
+
+- name: alpine
+  type: docker-image
+  source:
+    repository: alpine
+    tag: latest
 
 - name: tag
   type: semver
@@ -48,13 +48,16 @@ jobs:
   serial_groups: [version]
   plan:
   - in_parallel:
+    - get: repository
+      trigger: true
     - get: tag
       params:
         bump: patch
-    - get: repository
+    - get: alpine
       trigger: true
   - task: copy-artifacts
     file: repository/tasks/copy.yml
+    image: alpine
   - put: kf-docker
     params:
       build: builddir
