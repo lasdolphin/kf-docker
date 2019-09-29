@@ -11,3 +11,4 @@ log () {
 log bash
 log curl
 log jq
+log kubectl

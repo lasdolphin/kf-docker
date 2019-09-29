@@ -4,6 +4,7 @@ platform: linux
 inputs:
 - name: repository
 - name: jq-github-release
+- name: kubectl-release
 
 outputs:
 - name: builddir
