@@ -17,13 +17,6 @@ resources:
     private_key: |
      ((git_private_key))
 
-
-- name: alpine
-  type: docker-image
-  source:
-    repository: alpine
-    tag: latest
-
 - name: tag
   type: semver
   source:
@@ -35,12 +28,26 @@ resources:
     private_key: |
      ((git_private_key))
 
+- name: alpine
+  type: docker-image
+  source:
+    repository: alpine
+    tag: latest
+
 - name: kf
   type: docker-image
   source:
     username:   saedalav
     password:   ((image_repo_secret))
     repository: saedalav/kf
+
+- name: jq
+  type: github-release
+  source:
+    owner: stedolan
+    repository: jq
+
+
 
 
 jobs:
@@ -57,6 +64,8 @@ jobs:
     - get: alpine
       trigger: true
       params: {save: true}
+    - get: jq-github-release
+      trigger: true
   - task: copy-artifacts
     file: repository/tasks/copy.yml
     image: alpine
@@ -65,6 +74,7 @@ jobs:
       load_base: alpine
       build: builddir
       tag_file: tag/version
+    get_params: {save: true}
   - task: sanity-test
     file: repository/tasks/test.yml
     image: kf
@@ -73,6 +83,7 @@ jobs:
       load: kf
       build: builddir
       tag_as_latest: true
+    get_params: {skip_download: true}
   - put: tag
     inputs: [tag]
     params:

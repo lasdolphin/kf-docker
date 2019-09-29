@@ -2,3 +2,4 @@
 set -eu pipefile
 
 curl --version
+jq --version
