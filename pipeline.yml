@@ -44,8 +44,8 @@ resources:
 - name: gcloud-release
   type: file-url
   source:
-    url: https://cloud.google.com/sdk/docs/release-notes
-    filename: release-notes
+    url: https://cloud.google.com/sdk/docs/#linux.htlm
+    filename: release-version
 
 - name: jq-github-release
   type: github-release

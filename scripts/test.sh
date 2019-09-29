@@ -15,3 +15,5 @@ log curl --version
 log jq --version
 log kubectl "version --client"
 log kf version
+log gcloud version
+log gsutil version
