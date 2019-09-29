@@ -6,6 +6,7 @@ inputs:
 - name: jq-github-release
 - name: kubectl-release
 - name: kf-cli-release
+- name: gcloud-release
 
 outputs:
 - name: builddir

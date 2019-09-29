@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 RUN apk add --no-cache --update \
-    bash curl
+    python3 bash curl
 
 
 COPY ["jq", "kubectl", "kf", "/usr/local/bin/"]

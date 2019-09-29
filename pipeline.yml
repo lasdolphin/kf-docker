@@ -41,6 +41,12 @@ resources:
     password:   ((image_repo_secret))
     repository: saedalav/kf
 
+- name: gcloud-release
+  type: file-url
+  source:
+    url: https://cloud.google.com/sdk/docs/release-notes
+    filename: release-notes
+
 - name: jq-github-release
   type: github-release
   source:
@@ -80,6 +86,8 @@ jobs:
     - get: kubectl-release
       trigger: true
     - get: kf-cli-release
+      trigger: true
+    - get: gcloud-release
       trigger: true
   - task: copy-artifacts
     file: repository/tasks/copy.yml
