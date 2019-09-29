@@ -63,9 +63,11 @@ jobs:
   - in_parallel:
     - get: repository
       trigger: true
-    - get: tag
+    - get: tag-rc
+      resource: tag
       params:
         bump: patch
+        pre: rc
     - get: alpine
       trigger: true
       params: {save: true}
@@ -80,15 +82,20 @@ jobs:
     params:
       load_base: alpine
       build: builddir
-      tag_file: tag/version
+      tag_file: tag-rc/version
     get_params: {save: true}
   - task: sanity-test
     file: repository/tasks/test.yml
     image: kf
+  - get: tag
+    resource: tag
+    params:
+      bump: patch
   - put: kf
     params:
       load: kf
       build: builddir
+      tag_file: tag/version
       tag_as_latest: true
     get_params: {skip_download: true}
   - put: tag
