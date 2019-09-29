@@ -3,12 +3,12 @@ set -eu pipefile
 
 log () {
   echo "--------------- $1 ---------------"
-  $1 --version
+  $1 $2
   echo "----------------------------------"
   echo ""
 }
 
-log bash
-log curl
-log jq
-log kubectl
+log bash --version
+log curl --version
+log jq --version
+log kubectl "version --client"
