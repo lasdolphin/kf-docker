@@ -13,6 +13,7 @@ resources:
   source:
     uri: git@github.com:saedalavinia/kf-docker.git
     branch: master
+    depth: 1
     private_key: |
      ((git_private_key))
 
