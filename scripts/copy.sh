@@ -8,8 +8,7 @@ mv kf-cli-release/kf builddir/kf && chmod +x builddir/kf
 
 
 ## gettheing the release version by crawling the gcloud/release/release-version notes
-GCLOUD_VERSION=$(cat gcloud-release/release-version | egrep -m 1 -o 'google-cloud-sdk-[0-9]+\.[0-
-9]+\.[0-9]' | sort -n | head -n 1)
+GCLOUD_VERSION=$(cat gcloud-release/release-version | egrep -m 1 -o 'google-cloud-sdk-[0-9]+\.[0-9]+\.[0-9]' | sort -n | head -n 1)
 wget -q -O gcloud.tar.gz "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/$GCLOUD_VERSION-linux-x86_64.tar.gz"
 tar xzf gcloud.tar.gz
 mv google-cloud-sdk/bin/gcloud builddir/gcloud
