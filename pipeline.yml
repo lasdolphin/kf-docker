@@ -78,6 +78,11 @@ jobs:
       params:
         bump: patch
         pre: rc
+        pre_without_version: true
+    - get: tag
+      resource: tag
+      params:
+        bump: patch        
     - get: alpine
       trigger: true
       params: {save: true}
@@ -101,10 +106,6 @@ jobs:
   - task: sanity-test
     file: repository/tasks/test.yml
     image: kf
-  - get: tag
-    resource: tag
-    params:
-      bump: patch
   - put: kf
     params:
       load: kf

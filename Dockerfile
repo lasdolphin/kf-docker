@@ -5,5 +5,6 @@ RUN apk add --no-cache --update \
 
 
 COPY ["jq", "kubectl", "kf","docker-credential-gcloud", "gcloud", "gsutil", "/usr/local/bin/"]
-ADD gcloud-lib /usr/local/lib/
+ADD google-cloud-sdk /usr/local/
+ENV PATH /usr/local/google-cloud-sdk/bin:$PATH
 
