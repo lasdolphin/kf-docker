@@ -11,7 +11,7 @@ mv kf-cli-release/kf builddir/kf && chmod +x builddir/kf
 GCLOUD_VERSION=$(cat gcloud-release/release-version | egrep -m 1 -o 'google-cloud-sdk-[0-9]+\.[0-9]+\.[0-9]' | sort -n | head -n 1)
 wget -q -O gcloud.tar.gz "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/$GCLOUD_VERSION-linux-x86_64.tar.gz"
 tar xzf gcloud.tar.gz
-mv -R google-cloud-sdk builddir/
+mv google-cloud-sdk builddir/
 
 
 ## we have got the version of the kubectl in kubectl-release/kubectl-version
