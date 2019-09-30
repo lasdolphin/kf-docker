@@ -5,5 +5,5 @@ RUN apk add --no-cache --update \
 
 
 COPY ["jq", "kubectl", "kf","docker-credential-gcloud", "gcloud", "gsutil", "/usr/local/bin/"]
-COPY builddir/gcloud-lib /usr/local/lib/
+COPY builddir/gcloud-lib/ /usr/local/lib/
 

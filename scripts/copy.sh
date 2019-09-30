@@ -14,7 +14,7 @@ tar xzf gcloud.tar.gz
 mv google-cloud-sdk/bin/gcloud builddir/gcloud
 mv google-cloud-sdk/bin/gsutil builddir/gsutil
 mv google-cloud-sdk/bin/docker-credential-gcloud builddir/docker-credential-gcloud
-mv google-cloud-sdk/lib/ builddir/gcloud-lib
+mv google-cloud-sdk/lib/ builddir/gcloud-lib/
 
 
 ## we have got the version of the kubectl in kubectl-release/kubectl-version
