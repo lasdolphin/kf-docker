@@ -17,3 +17,5 @@ log kubectl "version --client"
 log kf version
 log gcloud version
 log gsutil version
+log git --version
+log docker --version
