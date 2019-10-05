@@ -1,4 +1,6 @@
 FROM alpine:latest
+MAINTAINER saedalavinia <saedalav@gmail.com>
+
 
 RUN apk add --no-cache --update \
     python3 openrc docker git bash curl
