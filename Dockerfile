@@ -9,5 +9,5 @@ RUN apk add --no-cache --update \
 COPY ["jq", "kubectl", "kf", "/usr/local/bin/"]
 ADD google-cloud-sdk /usr/local/
 ENV PATH /usr/local/google-cloud-sdk/bin:$PATH
-
+RUN gcloud components install docker-credential-gcr
 RUN rc-update add docker boot
