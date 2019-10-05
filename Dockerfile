@@ -11,4 +11,3 @@ ADD google-cloud-sdk /usr/local/
 ENV PATH /usr/local/google-cloud-sdk/bin:$PATH
 
 RUN rc-update add docker boot
-RUN service docker start
