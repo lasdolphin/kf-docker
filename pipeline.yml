@@ -62,7 +62,7 @@ resources:
 - name: kf-cli-release
   type: file-url
   source:
-    url: https://storage.googleapis.com/artifacts.kf-releases.appspot.com/nightly-builds/cli/kf-linux-latest
+    url: https://storage.googleapis.com/artifacts.kf-releases.appspot.com/nightly/latest/bin/kf-linux
     filename: kf
 
 jobs:
