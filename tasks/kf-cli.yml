@@ -1,0 +1,19 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: gcr.io/kf-releases/kf-release-deployer
+    tag: ((kf_release))
+
+outputs: 
+- name: kf-cli-release
+  path: "/kf/docs/kf.dev/public/bin/"
+
+run: 
+  path: "/bin/bash"
+  args: 
+  - echo "getting kf-cli"
+  
+

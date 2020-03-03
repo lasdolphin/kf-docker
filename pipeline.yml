@@ -7,26 +7,33 @@ resource_types:
     repository: pivotalservices/concourse-curl-resource
     tag: latest
 
+- name: kf-release-builder
+  type: docker-image
+  source:
+    repository: gcr.io/kf-releases/kf-release-deployer
+    tag: nightly
+
+
 resources:
 - name: repository
   type: git
   source:
-    uri: git@github.com:saedalavinia/kf-docker.git
+    uri: git@gitlab.gemaltocloud.com:kf/kf-docker.git
     branch: master
     depth: 1
     private_key: |
-     ((git_private_key))
+     ((git.key))
 
 - name: tag
   type: semver
   source:
     driver: git
-    uri: git@github.com:saedalavinia/kf-docker.git
+    uri: git@gitlab.gemaltocloud.com:kf/kf-docker.git
     branch: version
     file: tag
     initial_version: 0.0.0
     private_key: |
-     ((git_private_key))
+     ((git.key))
 
 - name: alpine
   type: docker-image
@@ -37,9 +44,9 @@ resources:
 - name: kf
   type: docker-image
   source:
-    username:   saedalav
+    username:   lasdolphin
     password:   ((image_repo_secret))
-    repository: saedalav/kf
+    repository: lasdolphin/kf
 
 - name: gcloud-release
   type: file-url
@@ -65,7 +72,10 @@ resources:
     url: https://storage.googleapis.com/artifacts.kf-releases.appspot.com/nightly/latest/bin/kf-linux
     filename: kf
 
+
 jobs:
+
+  
 - name: docker-build
   serial: true
   serial_groups: [version]
@@ -94,6 +104,8 @@ jobs:
       trigger: true
     - get: gcloud-release
       trigger: true
+  - task: kf-cli
+    file: repository/tasks/kf-cli.yml
   - task: copy-artifacts
     file: repository/tasks/copy.yml
     image: alpine
